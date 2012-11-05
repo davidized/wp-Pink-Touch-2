@@ -6,7 +6,7 @@
 
 get_header(); ?>
 
-<?php the_post(); ?>
+<?php while ( have_posts() ) : the_post(); ?>
 
 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="date">
@@ -91,7 +91,7 @@ get_header(); ?>
 		<?php the_tags( __( '<p class="tag-list">Tags: ', 'pinktouch' ), ', ', '</p>' ); ?>
 
 		<p>
-			<span class="permalink"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'pinktouch' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php _e( 'Permalink', 'pinktouch' ); ?></a></span>
+			<span class="permalink"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'pinktouch' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php _e( 'Permalink', 'pinktouch' ); ?></a></span>
 
 			<span class="notes"><?php comments_popup_link( __( 'Leave a comment', 'pinktouch' ), __( '1 Comment', 'pinktouch' ), __( '% Comments', 'pinktouch' ) ); ?></span>
 		</p>
@@ -100,5 +100,7 @@ get_header(); ?>
 </div><!-- /.post -->
 
 <?php comments_template( '', true ); ?>
+
+<?php endwhile; // end of the loop. ?>
 
 <?php get_footer(); ?>

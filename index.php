@@ -46,14 +46,17 @@ get_header(); ?>
 	<?php rewind_posts(); ?>
 
 	<?php if ( have_posts() ) : ?>
+		<div id="posts-wrapper">
 
-		<?php while ( have_posts() ) : the_post(); ?>
+			<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php get_template_part( 'content', get_post_format() ); ?>
+				<?php get_template_part( 'content', get_post_format() ); ?>
 
-		<?php endwhile; ?>
+			<?php endwhile; ?>
 
-		<?php pinktouch_content_nav(); ?>
+			<?php pinktouch_content_nav(); ?>
+
+		</div><!-- #post-wrapper -->
 
 	<?php else : ?>
 

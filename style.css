@@ -1,9 +1,9 @@
 /*
 Theme Name: Pink Touch 2
-Theme URI: http://theme.wordpress.com/themes/pink-touch-2
+Theme URI: http://theme.wordpress.com/themes/pink-touch-2/
 Author: Automattic
-Author URI: http://automattic.com
-Version: 1.0
+Author URI: http://automattic.com/
+Version: 1.1
 Description: A theme that has a stellar mix of color, texture and typography. Designed by <a href="http://versiontexto.com/">Kcmr</a>. It features a custom header, custom background, and maximum three widget areas in the footer. It comes with supports for several post formats including aside, gallery, image, quote, link, chat, and audio.
 Tags: gray, pink, red, silver, light, one-column, fixed-width, custom-background, custom-header, custom-menu, post-formats, rtl-language-support, sticky-post, translation-ready
 License: GNU General Public License
@@ -118,7 +118,8 @@ legend {
 -------------------------------------------------------------- */
 
 body {
-	background: url(images/bg.jpg) repeat fixed;
+	background-color: #e3e3e3;
+	background-attachment: fixed;
 	font-family: Cambria, Georgia, Times, serif;
 	font-size: 1em;
 	line-height: 1.5em;
@@ -769,7 +770,7 @@ img.size-auto,
 img.size-full,
 img.size-large,
 img.size-medium,
-.attachment img,
+.entry-attachment img,
 .comment-content img,
 .entry-content img,
 .widget img {
@@ -817,8 +818,7 @@ img.alignright,
 .commentlist ul {
 	margin: 0;
 }
-.comment,
-.trackback,
+.comment, .trackback,
 .pingback {
 	border-bottom: 1px dotted #a9a9a9;
 	margin-top: 25px;
@@ -989,47 +989,6 @@ a.comment-reply-link:hover {
 legend span {
 	border-bottom: 1px solid #ccc;
 	padding: 0 0 0.7em;
-}
-#comments #respond h3#reply-title {
-	padding-top: 0.7em;
-}
-#respond .comment-notes,
-#respond .logged-in-as {
-	color: #555;
-	font-size: 15px;
-	margin-top: 5px;
-}
-#respond input[type=text],
-#respond textarea {
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	margin: 6px 0;
-	padding: 8px;
-}
-#respond input[type=text] {
-	display: block;
-	width: 60%;
-}
-#respond textarea {
-	display: block;
-	margin-bottom: 1em;
-	width: 80%;
-}
-#respond label {
-	background: #eb374b;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	color: #fff;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 3px 5px;
-	text-transform: uppercase;
-}
-#respond .form-allowed-tags {
-	display: none;
-}
-#respond input[type=submit] {
-	font-size: 18px;
 }
 
 
@@ -1209,4 +1168,101 @@ legend span {
 	color: #474646;
 	font-size: 0.875em;
 	text-align: left;
+}
+
+
+/* =WP.com
+-------------------------------------------------------------- */
+
+html {
+	padding-bottom: 0 !important; /* Related Posts Ad */
+}
+.logged-in #navigation {
+	top: 28px;
+}
+#wpstats {
+	display: block;
+	margin: -5px auto 0;
+	position: relative;
+	z-index: 999;
+}
+.wpl-likebox .wpl-avatars {
+	margin-bottom: 15px;
+}
+.sharedaddy {
+	clear: both;
+}
+.sharedaddy:after {
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+.entry-content .video-plh,
+.entry-content .video-player {
+	margin: 0 0 22px 0;
+	padding: 0;
+}
+
+
+/* =Jetpack: Infinite Scroll
+-------------------------------------------------------------- */
+.infinite-scroll .infinite-wrap {
+	border-top: none;
+	padding: 0;
+}
+/**
+* Elements to hide:
+* (footer widgets, post navigation, regular footer)
+*/
+.infinite-scroll #content .pagination,
+.infinite-scroll.neverending #footer,
+.infinite-scroll.neverending #footer-frill {
+	display: none;
+}
+/* Stylistic adjustments */
+#infinite-footer .container {
+	background: rgba(242, 242, 242, 0.9);
+	border: 1px solid #dedede;
+	font-family: Arvo, Cambria, Georgia, Times, serif;
+}
+#infinite-footer .blog-credits a {
+	color: #eb374b;
+}
+#infinite-footer .blog-info a:hover,
+#infinite-footer .blog-info a:focus,
+#infinite-footer .blog-credits a:hover,
+#infinite-footer .blog-credits a:focus {
+	color: #05b2c2;
+}
+#infinite-footer .blog-credits {
+	color:  #474646;
+}
+#infinite-handle {
+	margin-top: -55px;
+}
+#infinite-handle span {
+	-moz-box-shadow: 0 4px 0 rgba(94, 94, 94, 0.1);
+	-webkit-box-shadow: 0 4px 0 rgba(94, 94, 94, 0.1);
+	box-shadow: 0 4px 0 rgba(94, 94, 94, 0.1);
+	background: #f2f2f2;
+	border: none;
+	display: inline-block;
+	font-family: Arvo, Cambria, Georgia, Times, serif;
+}
+#infinite-handle span,
+#infinite-handle span:before {
+	color: #000;
+}
+#infinite-handle span:hover,
+#infinite-handle span:hover:before {
+	color: #05b2c2;
+}
+/**
+* Hooks to infinity-end body class to restore footer
+*/
+.infinity-end.neverending #footer,
+.infinity-end.neverending #footer-frill {
+	display: block;
 }

@@ -1,37 +1,16 @@
-# Copyright (C) 2010 Pink Touch 2
-# This file is distributed under the same license as the Pink Touch 2 package.
+# Copyright (C) 2012 Automattic
+# This file is distributed under the GNU General Public License.
 msgid ""
 msgstr ""
-"Project-Id-Version: Pink Touch 2 1.0\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/pink-touch-2\n"
-"POT-Creation-Date: 2011-09-15 12:47:06+00:00\n"
+"Project-Id-Version: Pink Touch 2 1.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tags/pink-touch-2\n"
+"POT-Creation-Date: 2012-11-05 19:06:40+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-
-#: content.php:10 content.php:20 functions.php:230 image.php:94
-#: content-gallery.php:10 content-gallery.php:20 content-gallery.php:40
-#: content-audio.php:12 content-audio.php:22 content-link.php:10
-msgid "Permalink to %s"
-msgstr ""
-
-#: content.php:12 content-gallery.php:12 content-audio.php:14
-#: content-link.php:12
-msgid "Featured"
-msgstr ""
-
-#: content.php:23 functions.php:289 content-gallery.php:24
-#: content-audio.php:44 content-link.php:49
-msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
-msgstr ""
-
-#: content.php:24 image.php:68 content-gallery.php:46 content-audio.php:45
-#: content-link.php:50
-msgid "Pages:"
-msgstr ""
 
 #: comments.php:9
 msgid ""
@@ -56,120 +35,151 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
+#: content-audio.php:12 content-audio.php:24 content-gallery.php:10
+#: content-gallery.php:22 content-gallery.php:46 content-link.php:10
+#: content.php:11 content.php:24 functions.php:243 image.php:94
+msgid "Permalink to %s"
+msgstr ""
+
+#: content-audio.php:14 content-gallery.php:12 content-link.php:12
+#: content.php:13
+msgid "Featured"
+msgstr ""
+
+#: content-audio.php:50 content-gallery.php:30 content-link.php:49
+#: content.php:31 functions.php:302
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: content-audio.php:51 content-gallery.php:52 content-link.php:50
+#: content.php:32 image.php:68
+msgid "Pages:"
+msgstr ""
+
+#: content-gallery.php:45
+msgid "This gallery contains <a %1$s>%2$s photo</a>."
+msgid_plural "This gallery contains <a %1$s>%2$s photos</a>."
+msgstr[0] ""
+msgstr[1] ""
+
+#: footer.php:20
+msgid "Theme: %1$s by %2$s."
+msgstr ""
+
 #: functions.php:42
 msgid "Primary Menu"
 msgstr ""
 
-#: functions.php:164
+#: functions.php:177
 msgid "Footer Area One"
 msgstr ""
 
-#: functions.php:166 functions.php:175 functions.php:184
+#: functions.php:179 functions.php:188 functions.php:197
 msgid "An optional widget in the footer"
 msgstr ""
 
-#: functions.php:173
+#: functions.php:186
 msgid "Footer Area Two"
 msgstr ""
 
-#: functions.php:182
+#: functions.php:195
 msgid "Footer Area Three"
 msgstr ""
 
-#: functions.php:199
+#: functions.php:212
 msgid ""
 "Posted by <span class=\"author vcard\"><a class=\"url fn n\" href=\"%1$s\" "
 "title=\"%2$s\" rel=\"author\">%3$s</a></span> in %4$s"
 msgstr ""
 
-#: functions.php:201 functions.php:212
+#: functions.php:214 functions.php:225
 msgid "View all posts by %s"
 msgstr ""
 
-#: functions.php:203 functions.php:221
+#: functions.php:216 functions.php:234
 msgid ", "
 msgstr ""
 
-#: functions.php:210
+#: functions.php:223
 msgid ""
 "Posted by <span class=\"author vcard\"><a class=\"url fn n\" href=\"%1$s\" "
 "title=\"%2$s\" rel=\"author\">%3$s</a></span>"
 msgstr ""
 
-#: functions.php:220
+#: functions.php:233
 msgid "Posted in %s"
 msgstr ""
 
-#: functions.php:227 image.php:91
+#: functions.php:240 image.php:91
 msgid "<p class=\"tag-list\">Tags: "
 msgstr ""
 
-#: functions.php:230 image.php:94
+#: functions.php:243 image.php:94
 msgid "Permalink"
 msgstr ""
 
-#: functions.php:233 image.php:96
+#: functions.php:246 image.php:96
 msgid "Leave a comment"
 msgstr ""
 
-#: functions.php:233 image.php:96
+#: functions.php:246 image.php:96
 msgid "1 Comment"
 msgstr ""
 
-#: functions.php:233 image.php:96
+#: functions.php:246 image.php:96
 msgid "% Comments"
 msgstr ""
 
-#: functions.php:237 image.php:98
+#: functions.php:250 image.php:98
 msgid "Edit"
 msgstr ""
 
-#: functions.php:249
+#: functions.php:262
 msgid ""
 "<span class=\"older\"><span class=\"meta-nav\">&larr;</span> Older posts</"
 "span>"
 msgstr ""
 
-#: functions.php:250
+#: functions.php:263
 msgid ""
 "<span class=\"newer\">Newer posts <span class=\"meta-nav\">&rarr;</span></"
 "span>"
 msgstr ""
 
-#: functions.php:314
+#: functions.php:327
 msgid "About %s"
 msgstr ""
 
-#: functions.php:318
+#: functions.php:331
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: functions.php:359
+#: functions.php:372
 msgid "Pingback:"
 msgstr ""
 
-#: functions.php:359 functions.php:384
+#: functions.php:372 functions.php:397
 msgid "(Edit)"
 msgstr ""
 
-#: functions.php:370
+#: functions.php:383
 msgid "<cite class=\"fn\">%s</cite>"
 msgstr ""
 
-#: functions.php:377
+#: functions.php:390
 msgid "<a href=\"%1$s\"><time pubdate datetime=\"%2$s\">%3$s</time></a>"
 msgstr ""
 
 #. translators: 1: date, 2: time
-#: functions.php:381
+#: functions.php:394
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: functions.php:388
+#: functions.php:401
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: functions.php:395
+#: functions.php:408
 msgid "Reply <span>&darr;</span>"
 msgstr ""
 
@@ -188,20 +198,10 @@ msgstr ""
 #: image.php:82
 msgid ""
 "<p class=\"attachment-meta\"><span class=\"meta-prep meta-prep-entry-date"
-"\">Published</span> at <a href=\"%1$s\" title=\"Link to full-size image\">%2"
-"$s &times; %3$s</a> in <a href=\"%4$s\" title=\"Return to %5$s\" rel="
+"\">Published</span> at <a href=\"%1$s\" title=\"Link to full-size image\">"
+"%2$s &times; %3$s</a> in <a href=\"%4$s\" title=\"Return to %5$s\" rel="
 "\"gallery\">%5$s</a></p>"
 msgstr ""
-
-#: searchform.php:8
-msgid "Search"
-msgstr ""
-
-#: content-gallery.php:39
-msgid "This gallery contains <a %1$s>%2$s photo</a>."
-msgid_plural "This gallery contains <a %1$s>%2$s photos</a>."
-msgstr[0] ""
-msgstr[1] ""
 
 #: index.php:16
 msgid "Daily Archives: %s"
@@ -235,18 +235,18 @@ msgstr ""
 msgid "Search Results for: %s"
 msgstr ""
 
-#: index.php:61
+#: index.php:64
 msgid "Nothing Found."
 msgstr ""
 
-#: index.php:67
+#: index.php:70
 msgid ""
 "Apologies, but no results were found for the requested archive. Perhaps "
 "searching will help find a related post."
 msgstr ""
 
-#: footer.php:20
-msgid "Theme: %1$s by %2$s."
+#: searchform.php:8
+msgid "Search"
 msgstr ""
 
 #: single.php:15
@@ -265,29 +265,30 @@ msgid "Pink Touch 2"
 msgstr ""
 
 #. Theme URI of the plugin/theme
-msgid "http://theme.wordpress.com/themes/pink-touch-2"
+msgid "http://theme.wordpress.com/themes/pink-touch-2/"
 msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"A theme that has a stellar mix of color, texture and typography. It features "
-"a custom header, custom background, and maximum three widget areas in the "
-"footer. It comes with supports for several post formats including aside, "
-"gallery, image, quote, link, chat, and audio."
+"A theme that has a stellar mix of color, texture and typography. Designed by "
+"<a href=\"http://versiontexto.com/\">Kcmr</a>. It features a custom header, "
+"custom background, and maximum three widget areas in the footer. It comes "
+"with supports for several post formats including aside, gallery, image, "
+"quote, link, chat, and audio."
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Kcmr"
+msgid "Automattic"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://versiontexto.com"
+msgid "http://automattic.com/"
 msgstr ""
 
 #. Tags of the plugin/theme
 msgid ""
 "gray, pink, red, silver, light, one-column, fixed-width, custom-background, "
 "custom-header, custom-menu, post-formats, rtl-language-support, sticky-post, "
-"translation-ready, blog, design, fashion, journal, news, notes, tumblelog, "
-"video, bright, clean, light, modern, simple, textured"
+"translation-ready, infinite-scroll, blog, design, fashion, journal, news, "
+"notes, tumblelog, video, bright, clean, light, modern, simple, textured"
 msgstr ""

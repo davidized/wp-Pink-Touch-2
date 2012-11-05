@@ -32,6 +32,9 @@ blockquote {
 	padding-left: 0;
 	padding-right: 0.9375em;
 }
+.widget #searchfield {
+	float:right
+}
 #nav-menu {
 	float: right;
 	margin: -4px -16px 4px 0;
@@ -54,13 +57,13 @@ blockquote {
 	left: auto;
 	right: 100%;
 }
-.date {
+.hentry .date {
 	background: url(images/sprite-rtl.png) bottom right no-repeat;
 	float: right;
 	margin-left: 0;
 	margin-right: -120px;
 }
-.date p {
+.hentry .date p {
 	text-align: left;
 }
 .content {
@@ -183,4 +186,8 @@ blockquote {
 	float: right;
 	padding-left: 10px;
 	padding-right: 0;
+}
+
+.info-theme {
+	text-align: right;
 }

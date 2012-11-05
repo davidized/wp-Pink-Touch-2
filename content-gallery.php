@@ -7,7 +7,7 @@
 
 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="date">
-		<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'pinktouch' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+		<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'pinktouch' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark">
 			<?php if ( ! is_singular() && is_sticky() ) : ?>
 				<p><b><?php _e( 'Featured', 'pinktouch' ); ?></b></p>
 			<?php else : ?>
@@ -17,7 +17,13 @@
 	</div>
 
 	<div class="content">
-		<h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'pinktouch' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+		<h1 class="entry-title">
+			<?php if ( ! is_single() ) : ?>
+				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'pinktouch' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+			<?php else : ?>
+				<?php the_title(); ?>
+			<?php endif; ?>
+		</h1>
 
 		<div class="entry-content">
 			<?php if ( post_password_required() || is_singular() ) : ?>
@@ -37,7 +43,7 @@
 				</div><!-- .gallery-thumb -->
 
 				<p class="gallery-info"><em><?php printf( _n( 'This gallery contains <a %1$s>%2$s photo</a>.', 'This gallery contains <a %1$s>%2$s photos</a>.', $total_images, 'pinktouch' ),
-						'href="' . get_permalink() . '" title="' . sprintf( esc_attr__( 'Permalink to %s', 'pinktouch' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark"',
+						'href="' . get_permalink() . '" title="' . esc_attr( sprintf( __( 'Permalink to %s', 'pinktouch' ), the_title_attribute( 'echo=0' ) ) ) . '" rel="bookmark"',
 						number_format_i18n( $total_images )
 					); ?></em></p>
 				<?php endif; ?>

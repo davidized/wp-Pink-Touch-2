@@ -7,7 +7,7 @@
  // Load scripts.
 function pinktouch_scripts() {
 	if ( ! is_singular() || ( is_singular() && 'audio' == get_post_format() ) )
-		wp_enqueue_script( 'audio-player', get_template_directory_uri() . '/js/audio-player.js', array( 'jquery' ), '20110801' );
+		wp_enqueue_script( 'audio-player', get_template_directory_uri() . '/js/audio-player.js', array( 'swfobject' ), '20120525' );
 }
 add_action( 'wp_enqueue_scripts', 'pinktouch_scripts' );
 
@@ -15,17 +15,17 @@ add_action( 'wp_enqueue_scripts', 'pinktouch_scripts' );
 if ( ! isset( $content_width ) )
 	$content_width = 510;
 
+/**
+ * Load Jetpack compatibility file.
+ */
+require( get_template_directory() . '/inc/jetpack.compat.php' );
+
 // Tell WordPress to run pinktouch_setup() when the 'after_setup_theme' hook is run.
 add_action( 'after_setup_theme', 'pinktouch_setup' );
 
 function pinktouch_setup() {
 
 	load_theme_textdomain( 'pinktouch', get_template_directory() . '/languages' );
-
-	$locale = get_locale();
-	$locale_file = get_template_directory() . "/languages/$locale.php";
-	if ( is_readable( $locale_file ) )
-		require_once( $locale_file );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menu( 'primary', __( 'Primary Menu', 'pinktouch' ) );
@@ -38,7 +38,20 @@ function pinktouch_setup() {
 	add_theme_support( 'post-formats', array( 'aside', 'gallery', 'image', 'quote', 'link', 'chat', 'audio', 'video' ) );
 
 	// Add support for custom backgrounds.
-	add_custom_background();
+	$bg_args = array(
+		'default-color' => 'e3e3e3',
+		'default-image' => get_template_directory_uri() . '/images/bg.jpg'
+	);
+	$bg_args = apply_filters( 'pinktouch_custom_background_args', $bg_args );
+	// 3.4 check
+	if ( wp_get_theme() ) {
+		add_theme_support( 'custom-background', $bg_args );
+	} else {
+		define( 'BACKGROUND_COLOR', $bg_args['default-color'] );
+		define( 'BACKGROUND_IMAGE', $bg_args['default-image'] );
+		add_custom_background();
+		add_action( 'wp_head', 'pinktouch_custom_background' );
+	}
 
 	// The default header text color
 	define( 'HEADER_TEXTCOLOR', '000000' );
@@ -51,6 +64,8 @@ function pinktouch_setup() {
 	 * See pinktouch_admin_header_style(), below.
 	 */
 	add_custom_image_header( 'pinktouch_header_style', 'pinktouch_admin_header_style' );
+
+	add_theme_support( 'print-style' );
 }
 
 // Header style for front-end.
@@ -96,7 +111,7 @@ function pinktouch_admin_header_style() {
 		text-align: center;
 	}
 	#headimg h1 {
-		font-family: "MuseoSlab500", "Helvetica Neue", Helvetica, sans-serif;
+		font-family: Arvo, Cambria, Georgia, Times, serif;
 		font-size: 40px;
 		font-weight: normal;
 		padding: 44px 0 0 0;
@@ -104,11 +119,10 @@ function pinktouch_admin_header_style() {
 		margin: 0;
 	}
 	#headimg h1 a {
-		font-family: sans-serif;
 		text-decoration: none;
 	}
 	#desc {
-		font-family: Cambria,Georgia,Times,serif;
+		font-family: Cambria, Georgia, Times, serif;
 		font-size: 18px;
 		font-style: italic;
 		line-height: 24px;
@@ -118,7 +132,7 @@ function pinktouch_admin_header_style() {
 <?php
 }
 
-// Background style for front-end.
+// COMPAT: Pre-3.4 Background style for front-end.
 function pinktouch_custom_background() {
 	if ( '' != get_background_color() && '' == get_background_image() ) : ?>
 	<style type="text/css">
@@ -128,7 +142,6 @@ function pinktouch_custom_background() {
 	</style>
 	<?php endif;
 }
-add_action( 'wp_head', 'pinktouch_custom_background' );
 
 // Sniff out the number of categories in use and return the number of categories.
 function pinktouch_category_counter() {
@@ -188,7 +201,7 @@ function pinktouch_post_data() { ?>
 					printf( __ ( 'Posted by <span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span> in %4$s', 'pinktouch' ),
 						esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 						esc_attr( sprintf( __( 'View all posts by %s', 'pinktouch' ), get_the_author() ) ),
-						esc_html( get_the_author() ),
+						get_the_author(),
 						get_the_category_list( __( ', ', 'pinktouch' ) )
 					);
 				?>
@@ -216,7 +229,7 @@ function pinktouch_post_data() { ?>
 		<?php the_tags( __( '<p class="tag-list">Tags: ', 'pinktouch' ), ', ', '</p>' ); ?>
 
 		<p>
-			<span class="permalink"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'pinktouch' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php _e( 'Permalink', 'pinktouch' ); ?></a></span>
+			<span class="permalink"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'pinktouch' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php _e( 'Permalink', 'pinktouch' ); ?></a></span>
 
 			<?php if ( comments_open() || ( '0' != get_comments_number() && ! comments_open() ) ) : ?>
 				<span class="notes"><?php comments_popup_link( __( 'Leave a comment', 'pinktouch' ), __( '1 Comment', 'pinktouch' ), __( '% Comments', 'pinktouch' ) ); ?></span>
@@ -300,7 +313,7 @@ function pinktouch_author_info() { ?>
 			<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'pinktouch_author_bio_avatar_size', 68 ) ); ?>
 		</div><!-- #author-avatar -->
 		<div id="author-description">
-			<h3><?php esc_html( printf( __( 'About %s', 'pinktouch' ), get_the_author() ) ); ?></h3>
+			<h3><?php echo esc_html( sprintf( __( 'About %s', 'pinktouch' ), get_the_author() ) ); ?></h3>
 			<?php the_author_meta( 'description' ); ?>
 			<div id="author-link">
 				<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
@@ -390,12 +403,62 @@ function pinktouch_comment( $comment, $args, $depth ) {
 	endswitch;
 }
 
-// Enqueue font styles.
+/**
+ * Register Google fonts styles.
+ */
+function pinktouch_register_fonts() {
+	$protocol = is_ssl() ? 'https' : 'http';
+	wp_register_style(
+		'arvo',
+		"$protocol://fonts.googleapis.com/css?family=Arvo:400,700",
+		array(),
+		'20120821'
+	);
+}
+add_action( 'init', 'pinktouch_register_fonts' );
+
+/**
+ * Enqueue Google fonts styles.
+ */
 function pinktouch_fonts() {
-	wp_enqueue_style( 'arvo', 'http://fonts.googleapis.com/css?family=Arvo:400,700' );
+	wp_enqueue_style( 'arvo' );
 }
 add_action( 'wp_enqueue_scripts', 'pinktouch_fonts' );
 
+/**
+ * Enqueue Google fonts style to admin screen for custom header display
+ */
+function pinktouch_admin_fonts( $hook_suffix ) {
+	if ( 'appearance_page_custom-header' != $hook_suffix )
+		return;
+	wp_enqueue_style( 'arvo' );
+}
+add_action( 'admin_enqueue_scripts', 'pinktouch_admin_fonts' );
+
+// Dequeue font styles.
+function pinktouch_dequeue_fonts() {
+
+	/**
+	 * We don't want to enqueue the font scripts if the blog
+	 * has WP.com Custom Design and is using a 'Headings' font.
+	 */
+	if ( class_exists( 'TypekitData' ) ) {
+
+		if ( TypekitData::get( 'upgraded' ) ) {
+			$customfonts = TypekitData::get( 'families' );
+			if ( ! $customfonts )
+				return;
+			$headings = $customfonts['headings'];
+
+			if ( $headings['id'] ) {
+				wp_dequeue_style( 'arvo' );
+			}
+		}
+	}
+}
+add_action( 'wp_enqueue_scripts', 'pinktouch_dequeue_fonts' );
+
+if ( ! function_exists( 'pinktouch_url_grabber' ) ) {
 /**
  * Return the URL for the first link found in this post.
  *
@@ -410,7 +473,9 @@ function pinktouch_url_grabber( $the_content = '' ) {
 
 	return esc_url_raw( $matches[1] );
 }
+} // if ( ! function_exists( 'pinktouch_url_grabber' ) )
 
+if ( ! function_exists( 'pinktouch_audio_grabber' ) ) {
 /**
  * Return the first audio file found for a post.
  *
@@ -427,3 +492,6 @@ function pinktouch_audio_grabber( $post_id ) {
 
 	return false;
 }
+} // if ( ! function_exists( 'pinktouch_audio_grabber' ) )
+
+// This theme was built with PHP, Semantic HTML, CSS, love, and a Toolbox.
