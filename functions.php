@@ -193,6 +193,7 @@ function pinktouch_widgets_init() {
 add_action( 'widgets_init', 'pinktouch_widgets_init' );
 
 // Show post data for use in loop.
+if ( ! function_exists( 'pinktouch_post_data' ) ):
 function pinktouch_post_data() { ?>
 	<div class="info">
 		<?php if ( 1 != pinktouch_category_counter() && is_multi_author() ) : ?>
@@ -240,8 +241,10 @@ function pinktouch_post_data() { ?>
 	</div>
 <?php
 }
+endif; //if ( ! function_exists( 'pinktouch_post_data' ) ):
 
 // Display navigation to next/previous pages when applicable.
+if ( ! function_exists( 'pinktouch_content_nav' ) ):
 function pinktouch_content_nav() {
 	global $wp_query;
 
@@ -254,6 +257,7 @@ function pinktouch_content_nav() {
 		</div>
 	<?php endif;
 }
+endif; //if ( ! function_exists( 'pinktouch_content_nav' ) ):
 
 // Count the number of footer sidebars to enable dynamic classes for the footer.
 function pinktouch_footer_sidebar_class() {
@@ -307,6 +311,7 @@ function pinktouch_custom_excerpt_more( $output ) {
 add_filter( 'get_the_excerpt', 'pinktouch_custom_excerpt_more' );
 
 // Show author info.
+if ( ! function_exists( 'pinktouch_author_info' ) ): 
 function pinktouch_author_info() { ?>
 	<div id="author-info" class="clearfix">
 		<div id="author-avatar">
@@ -324,6 +329,7 @@ function pinktouch_author_info() { ?>
 	</div><!-- #entry-author-info -->
 <?php
 }
+endif; //if ( ! function_exists( 'pinktouch_author_info' ) ): 
 
 // Add in-head JS block for audio post format.
 function pinktouch_add_audio_support() {
