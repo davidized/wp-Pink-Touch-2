@@ -160,6 +160,14 @@ function pinktouch_category_counter() {
 	return $all_the_cool_cats;
 }
 
+// Function to delete the transient set by pinktouch_category_counter()
+function pinktouch_category_counter_update() {
+	delete_transient( 'all_the_cool_cats' );
+}
+add_action( 'create_category', 'pinktouch_category_counter_update' );
+add_action( 'edit_category', 'pinktouch_category_counter_update' );
+add_action( 'delete_category', 'pinktouch_category_counter_update' );
+
 // Register widgetized area and update sidebar with default widgets.
 function pinktouch_widgets_init() {
 	register_sidebar( array(
