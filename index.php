@@ -30,9 +30,15 @@ get_header(); ?>
 			?>
 			</h1>
 
-			<?php $category_description = category_description(); if ( ! empty( $category_description ) ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $category_description . '</div>' ); ?>
-
-			<?php $tag_description = tag_description(); if ( ! empty( $tag_description ) ) echo apply_filters( 'tag_archive_meta', '<div class="archive-meta">' . $tag_description . '</div>' ); ?>
+			<?php 
+				if ( is_category() ) :
+					$category_description = category_description(); 
+					if ( ! empty( $category_description ) ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $category_description . '</div>' );
+				elseif ( is_tag() ) :
+					$tag_description = tag_description(); 
+					if ( ! empty( $tag_description ) ) echo apply_filters( 'tag_archive_meta', '<div class="archive-meta">' . $tag_description . '</div>' );
+				endif;
+			?>
 
 		</div>
 	<?php endif; ?>
