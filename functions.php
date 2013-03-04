@@ -508,4 +508,30 @@ function pinktouch_audio_grabber( $post_id ) {
 }
 } // if ( ! function_exists( 'pinktouch_audio_grabber' ) )
 
+add_action ('admin_menu', 'pinktouch_admin');
+function pinktouch_admin() {
+    // add the Customize link to the admin menu
+    add_theme_page( __( 'Customize', 'pinktouch' ), __( 'Customize', 'pinktouch' ), 'edit_theme_options', 'customize.php' );
+}
+
+add_action('customize_register', 'pinktouch_customize');
+function pinktouch_customize( $wp_customize ) {
+ 
+    $wp_customize->add_section( 'pinktouch_settings', array(
+        'title'          => __( 'Theme Settings', 'pinktouch' ),
+        'priority'       => 35,
+    ) );
+ 
+    $wp_customize->add_setting( 'pinktouch_show_search', array(
+        'default'        => true,
+    ) );
+ 
+    $wp_customize->add_control( 'pinktouch_show_search', array(
+        'label'   => __( 'Show search in Navigation Bar', 'pinktouch' ),
+        'section' => 'pinktouch_settings',
+        'type'    => 'checkbox',
+    ) );
+ 
+}
+
 // This theme was built with PHP, Semantic HTML, CSS, love, and a Toolbox.
