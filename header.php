@@ -43,7 +43,7 @@
 		<div id="navigation">
 			<div class="wrapper clearfix">
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'fallback_cb' => '', 'container_id' => 'nav-menu' ) ); ?>
-				<?php get_search_form(); ?>
+				<?php if( get_theme_mod( 'pinktouch_show_search', true ) ) get_search_form(); ?>
 			</div>
 		</div><!-- /#navigation -->
 		<div id="navigation-frill"></div>
