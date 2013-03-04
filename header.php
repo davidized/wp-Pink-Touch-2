@@ -38,7 +38,11 @@
 ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php 
+		$pinktouch_nav_size = 'nav_search';
+		if( ! get_theme_mod( 'pinktouch_show_search', true ) )
+			$pinktouch_nav_size = 'nav_no_search';
+		body_class( $pinktouch_nav_size ); ?>>
 	<div id="wrapper">
 		<div id="navigation">
 			<div class="wrapper clearfix">

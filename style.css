@@ -405,6 +405,9 @@ ul:after {
 	margin: -4px 0 4px -16px;
 	width: 490px;
 }
+.nav_no_search #nav-menu {
+	width: 100%;
+}
 #nav-menu > ul {
 	margin: 0 0 0 -1em;
 }
