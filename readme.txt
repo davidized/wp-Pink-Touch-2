@@ -1,5 +1,12 @@
 == Changelog ==
 
+= 1.2 Unfinished =
+* Add option to show/hide the search field in the main navigation bar
+* Makes pinktouch_post_data, pinktouch_content_nav, pinktouch_author_info functions pluggable so they can be more easily overriden by child themes
+* Fixes bug which displayed Category/Tag archive description in the header twice
+* Fixes bug which may have prevented categories from showing up on blog posts
+
+
 = 1.1 Nov 5 2012 =
 * Add trailing slashes to URLs in comment header
 * Move functions for grabbing bits of content into a new file, for separation and organization
