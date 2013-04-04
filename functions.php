@@ -35,7 +35,8 @@ function pinktouch_setup() {
 	add_theme_support( 'automatic-feed-links' );
 
 	// Enable Post Formats.
-	add_theme_support( 'post-formats', array( 'aside', 'gallery', 'image', 'quote', 'link', 'chat', 'audio', 'video' ) );
+	add_theme_support( 'post-formats', array( 'aside', 'gallery', 'image', 'quote', 'chat', 'audio', 'video' ) );
+	add_theme_support( 'structured-post-formats', array( 'link', ) );
 
 	// Add support for custom backgrounds.
 	$bg_args = array(

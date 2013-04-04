@@ -18,11 +18,8 @@
 
 	<div class="content">
 		<?php
-			// Let's get all the post content
-			$link_content = $post->post_content;
-
 			// And let's find the first url in the post content
-			$link_url = pinktouch_url_grabber();
+			$link_url = esc_url( get_the_post_format_url() );
 
 			// Let's make the title a link if there's a link in this link post
 			if ( ! empty( $link_url ) ) :
@@ -39,14 +36,14 @@
 		// If they're one and the same we don't really need to show the post content BECAUSE ...
 		// that's just a url and we're already using that url as a href for the title link above BUT ...
 		// if they're NOT the same I think we should show that content.
-		if ( strlen( $link_url ) != strlen( $link_content ) ) :
+		if ( strlen( $link_url ) != strlen( $post->post_content ) ) :
 
 		// Let's make any bare URL a clickable link, too.
 		add_filter( 'the_content', 'make_clickable' );
 		?>
 
 		<div class="entry-content">
-			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'pinktouch' ) ); ?>
+			<?php the_remaining_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'pinktouch' ) ); ?>
 			<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'pinktouch' ), 'after' => '</div>' ) ); ?>
 			<?php if ( get_the_author_meta( 'description' ) && is_singular() ) pinktouch_author_info(); ?>
 		</div><!-- .entry-content -->
