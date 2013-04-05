@@ -31,15 +31,14 @@
 
 			<?php else : ?>
 				<?php
-					$images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'post_mime_type' => 'image', 'orderby' => 'menu_order', 'order' => 'ASC', 'numberposts' => 999 ) );
+					$images = pinktouch_get_gallery_images();
 					if ( $images ) :
 						$total_images = count( $images );
 						$image = array_shift( $images );
-						$image_img_tag = wp_get_attachment_image( $image->ID, 'large' );
 				?>
 
 				<div class="gallery-thumb">
-					<a href="<?php the_permalink(); ?>"><?php echo $image_img_tag; ?></a>
+					<a href="<?php the_permalink(); ?>"><?php echo wp_get_attachment_image( $image, 'pinktouch-image-post' ); ?></a>
 				</div><!-- .gallery-thumb -->
 
 				<p class="gallery-info"><em><?php printf( _n( 'This gallery contains <a %1$s>%2$s photo</a>.', 'This gallery contains <a %1$s>%2$s photos</a>.', $total_images, 'pinktouch' ),

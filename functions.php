@@ -538,4 +538,43 @@ function pinktouch_customize( $wp_customize ) {
  
 }
 
+/** 
+ * Retrieves the IDs for images in a gallery. 
+ *
+ * From Twenty Eleven 1.6. 
+ * 
+ * @uses get_post_galleries() first, if available. Falls back to shortcode parsing, 
+ * then as last option uses a get_posts() call. 
+ * 
+ * @return array List of image IDs from the post gallery. 
+ */ 
+function pinktouch_get_gallery_images() { 
+	$images = array(); 
+
+	if ( function_exists( 'get_post_gallery_images' ) ) { 
+		$galleries = get_post_galleries(); 
+		if ( isset( $galleries[0]['ids'] ) ) 
+			$images = explode( ',', $galleries[0]['ids'] ); 
+	} else { 
+		$pattern = get_shortcode_regex(); 
+		preg_match( "/$pattern/s", get_the_content(), $match ); 
+		$atts = shortcode_parse_atts( $match[3] ); 
+		if ( isset( $atts['ids'] ) ) 
+			$images = explode( ',', $atts['ids'] ); 
+	} 
+
+	if ( ! $images ) { 
+		$images = get_posts( array( 
+			'fields'         => 'ids', 
+			'numberposts'    => 999, 
+			'order'          => 'ASC', 
+			'orderby'        => 'menu_order', 
+			'post_mime_type' => 'image', 
+			'post_parent'    => get_the_ID(), 
+			'post_type'      => 'attachment', 
+		) ); 
+	}
+	return $images; 
+} 
+
 // This theme was built with PHP, Semantic HTML, CSS, love, and a Toolbox.
