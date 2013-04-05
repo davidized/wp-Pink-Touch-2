@@ -35,8 +35,8 @@ function pinktouch_setup() {
 	add_theme_support( 'automatic-feed-links' );
 
 	// Enable Post Formats.
-	add_theme_support( 'post-formats', array( 'aside', 'gallery', 'quote', 'chat', 'video' ) );
-	add_theme_support( 'structured-post-formats', array( 'link', 'image', 'audio' ) );
+	add_theme_support( 'post-formats', array( 'aside', 'gallery', 'quote', 'chat' ) );
+	add_theme_support( 'structured-post-formats', array( 'link', 'image', 'audio', 'video' ) );
 	
 	// Register custom image size for image post formats.
 	add_image_size( 'pinktouch-image-post', 510, 1024 );
