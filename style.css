@@ -760,11 +760,15 @@ body.attachment .entry-caption {
 .hentry.format-quote {
 	background: #feffe0;
 }
-.format-quote blockquote {
+.format-quote blockquote,
+.format-quote .quote-caption {
 	border-left: none;
 	font-size: 1.5em;
 	line-height: 1.5em;
 	padding-left: 0;
+}
+.format-quote .quote-caption {
+	padding-left: 1em;
 }
 /* Audio Posts */
 .format-audio .player {

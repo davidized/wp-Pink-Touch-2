@@ -38,6 +38,8 @@ function pinktouch_setup() {
 	add_theme_support( 'post-formats', array( 'aside', 'gallery', 'quote' ) );
 	add_theme_support( 'structured-post-formats', array( 'link', 'image', 'audio', 'video', 'chat' ) );
 	
+	add_filter( 'post_format_compat' , 'pinktouch_post_format_compat' );
+	
 	// Register custom image size for image post formats.
 	add_image_size( 'pinktouch-image-post', 510, 1024 );
 
@@ -70,6 +72,10 @@ function pinktouch_setup() {
 	add_custom_image_header( 'pinktouch_header_style', 'pinktouch_admin_header_style' );
 
 	add_theme_support( 'print-style' );
+}
+
+function pinktouch_post_format_compat() {
+	return array( 'position' => 'before', );
 }
 
 // Header style for front-end.
